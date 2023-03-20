@@ -9,14 +9,12 @@ import Firebase
 import FirebaseFirestoreSwift
 
 class MessagesViewModel: ObservableObject {
-    @Published var errorMessage: String = ""
     @Published var chatUser: User?
     @Published var recentMessages = [RecentMessage]()
     private var firestoreListener: ListenerRegistration?
     
     init() {
         fetchRecentMessages()
-        Logger.shared.debugPrint("MessagesViewModel")
     }
     
     private func fetchRecentMessages() {
@@ -29,13 +27,7 @@ class MessagesViewModel: ObservableObject {
             .document(uid)
             .collection("messages")
             .order(by: "timestamp")
-            .addSnapshotListener {querySnapshot, error in
-                if let error = error {
-                    Logger.shared.debugPrint(error.localizedDescription, fuction: "fetchRecentMessages")
-                    self.errorMessage = error.localizedDescription
-                    return
-                }
-                
+            .addSnapshotListener {querySnapshot, _ in
                 querySnapshot?.documentChanges.forEach {change in
                     
                     let docId = change.document.documentID

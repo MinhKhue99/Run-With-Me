@@ -21,8 +21,8 @@ struct MessagesView: View {
     
     // MARK: - body
     var body: some View {
-            NavigationStack {
-                ZStack(alignment:.bottom) {
+        NavigationStack {
+            ZStack(alignment:.bottom) {
                 VStack {
                     //custom navbar
                     if let user = authViewModel.currentUser {
@@ -52,7 +52,7 @@ struct MessagesView: View {
                         }
                         .padding()
                     }
-                   
+                    
                     messageview
                     
                 }
@@ -60,18 +60,18 @@ struct MessagesView: View {
             }
             
             buttonNewMessage
-                    .padding(.bottom, 30)
-            .fullScreenCover(isPresented: $isShowNewMessageScreen) {
-                NewMessageView(didSelectedNewUser: {user in
-                    self.chatUser = user
-                    self.isNavigateToChatLogView.toggle()
-                    self.chatLogViewModel.chatUser = user
-                    self.chatLogViewModel.fetchMessages()
-                })
-            }
-            .navigationDestination(isPresented: $isNavigateToChatLogView) {
-                ChatLogView(chatLogViewModel: chatLogViewModel)
-            }
+                .padding(.bottom, 30)
+                .fullScreenCover(isPresented: $isShowNewMessageScreen) {
+                    NewMessageView(didSelectedNewUser: {user in
+                        self.chatUser = user
+                        self.isNavigateToChatLogView.toggle()
+                        self.chatLogViewModel.chatUser = user
+                        self.chatLogViewModel.fetchMessages()
+                    })
+                }
+                .navigationDestination(isPresented: $isNavigateToChatLogView) {
+                    ChatLogView(chatLogViewModel: chatLogViewModel)
+                }
         }
     }
 }
@@ -86,7 +86,7 @@ extension MessagesView {
                             let uid = Auth.auth().currentUser?.uid ==
                             recentMessage.fromId ? recentMessage.toId : recentMessage.fromId
                             
-                            self.chatUser = .init(username: recentMessage.fullname, fullname: recentMessage.fullname, profileImageUrl: recentMessage.profileImageUrl, email: "")
+                            self.chatUser = .init(id: uid ,username: recentMessage.fullname, fullname: recentMessage.fullname, profileImageUrl: recentMessage.profileImageUrl, email: "")
                             self.chatLogViewModel.chatUser = self.chatUser
                             self.chatLogViewModel.fetchMessages()
                             self.isNavigateToChatLogView.toggle()
@@ -101,6 +101,7 @@ extension MessagesView {
                                 
                                 VStack(alignment: .leading) {
                                     Text(recentMessage.fullname)
+                                        .foregroundColor(.black)
                                         .font(.system(size: 16, weight: .bold))
                                     Text(recentMessage.message)
                                         .font(.system(size: 14))
@@ -111,7 +112,8 @@ extension MessagesView {
                                 Spacer()
                                 
                                 Text(recentMessage.timeAgo)
-                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundColor(Color(.gray))
+                                    .font(.system(size: 14, weight: .thin))
                             }
                         })
                     }

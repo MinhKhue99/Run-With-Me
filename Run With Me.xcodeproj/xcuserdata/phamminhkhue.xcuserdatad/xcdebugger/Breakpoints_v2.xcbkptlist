@@ -7,54 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "04F5D906-D022-49CD-BA88-1A1A1AFE430D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Run With Me/Core/SlideMenu/View/SlideMenuView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "body"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "04F5D906-D022-49CD-BA88-1A1A1AFE430D - 983a70954a2895a5"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Run_With_Me.SlideMenuView.body.getter : some"
-                  moduleName = "Run With Me"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/phamminhkhue/Graduation-Thesis/Run%20With%20Me/Run%20With%20Me/Core/SlideMenu/View/SlideMenuView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "17"
-                  endingLineNumber = "17"
-                  offsetFromSymbolStart = "160">
-               </Location>
-               <Location
-                  uuid = "04F5D906-D022-49CD-BA88-1A1A1AFE430D - bb7db3fd0fcdfc8a"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.ForEach&lt;Swift.Array&lt;Run_With_Me.SlideMenuViewModel&gt;, Swift.Int, SwiftUI._ConditionalContent&lt;SwiftUI._ConditionalContent&lt;SwiftUI.NavigationLink&lt;Run_With_Me.SlideMenuOptionRowView, Run_With_Me.ProfileView&gt;, SwiftUI.Button&lt;Run_With_Me.SlideMenuOptionRowView&gt;&gt;, Run_With_Me.SlideMenuOptionRowView&gt;&gt;, SwiftUI.Spacer)&gt; in Run_With_Me.SlideMenuView.body.getter : some"
-                  moduleName = "Run With Me"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/phamminhkhue/Graduation-Thesis/Run%20With%20Me/Run%20With%20Me/Core/SlideMenu/View/SlideMenuView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "19"
-                  endingLineNumber = "19"
-                  offsetFromSymbolStart = "246">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "11FD52F8-4F87-41C3-AD55-AC9B57C2DE5B"
             shouldBeEnabled = "No"
             ignoreCount = "0"

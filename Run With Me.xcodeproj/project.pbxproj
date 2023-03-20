@@ -271,9 +271,9 @@
 		FA2B864E294EE9850024D21B = {
 			isa = PBXGroup;
 			children = (
-				FA2B8659294EE9850024D21B /* Run With Me */,
-				FA2B8658294EE9850024D21B /* Products */,
 				FA1E832B29706B2A00B25BC1 /* Frameworks */,
+				FA2B8658294EE9850024D21B /* Products */,
+				FA2B8659294EE9850024D21B /* Run With Me */,
 			);
 			sourceTree = "<group>";
 		};
@@ -290,18 +290,18 @@
 			children = (
 				FA8417C929C2338300724B76 /* Run With Me.entitlements */,
 				FA8417C829C2319800724B76 /* Run With MeRelease.entitlements */,
-				FA4CE4472980C6A800146653 /* Run-With-Me-Info.plist */,
-				FA8417A329C2186600724B76 /* Helpers */,
-				FAD9305A296AB65B002F82AB /* Utils */,
-				FA2B866B294EEB240024D21B /* Extensions */,
-				FA2B866A294EEB1F0024D21B /* Service */,
-				FA2B8669294EEB180024D21B /* Core */,
-				FA2B8668294EEB0D0024D21B /* Model */,
-				FA2B865A294EE9850024D21B /* Run_With_MeApp.swift */,
-				FA2B865C294EE9850024D21B /* ContentView.swift */,
-				FA2B865E294EE9870024D21B /* Assets.xcassets */,
 				FAD93049296A6B29002F82AB /* GoogleService-Info.plist */,
+				FA4CE4472980C6A800146653 /* Run-With-Me-Info.plist */,
+				FA2B865C294EE9850024D21B /* ContentView.swift */,
+				FA2B865A294EE9850024D21B /* Run_With_MeApp.swift */,
+				FA2B865E294EE9870024D21B /* Assets.xcassets */,
+				FA2B8669294EEB180024D21B /* Core */,
+				FA2B866B294EEB240024D21B /* Extensions */,
+				FA8417A329C2186600724B76 /* Helpers */,
+				FA2B8668294EEB0D0024D21B /* Model */,
 				FA2B8660294EE9870024D21B /* Preview Content */,
+				FA2B866A294EEB1F0024D21B /* Service */,
+				FAD9305A296AB65B002F82AB /* Utils */,
 			);
 			path = "Run With Me";
 			sourceTree = "<group>";
@@ -335,20 +335,20 @@
 		FA2B8669294EEB180024D21B /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				FA1AE5D029C0BCA9005A4E6B /* TrackingRun */,
-				FA2DC95729AE4D9C00B6949F /* Comment */,
-				FAF5850B298F66FE008D529B /* ChatLog */,
-				FAD5D1B8298EAEE30088A7CF /* NewMessage */,
 				FA7DBE7B2965D8AD00FC21D2 /* Authentication */,
+				FAF5850B298F66FE008D529B /* ChatLog */,
+				FA2DC95729AE4D9C00B6949F /* Comment */,
 				FA2B866C294EF36D0024D21B /* Component */,
-				FA2B866D294EF3900024D21B /* Feed */,
 				FAD43B1D2962E423008698BD /* Explore */,
+				FA2B866D294EF3900024D21B /* Feed */,
 				FAD43B172962E1D1008698BD /* MainTab */,
 				FAD43B1B2962E41B008698BD /* Messages */,
+				FAD5D1B8298EAEE30088A7CF /* NewMessage */,
 				FA7DBE742965CCE300FC21D2 /* NewPost */,
 				FAD43B1C2962E41F008698BD /* Notification */,
-				FAAE8515296338E600EA9D09 /* SlideMenu */,
 				FAD43B1E2962E473008698BD /* Profile */,
+				FAAE8515296338E600EA9D09 /* SlideMenu */,
+				FA1AE5D029C0BCA9005A4E6B /* TrackingRun */,
 			);
 			path = Core;
 			sourceTree = "<group>";

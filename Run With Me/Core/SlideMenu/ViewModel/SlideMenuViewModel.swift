@@ -9,28 +9,22 @@ import Foundation
 
 enum SlideMenuViewModel: Int, CaseIterable {
     case profile
-    case lists
-    case bookmark
     case trackingRun
     case logout
-
+    
     var description: String {
         switch self {
-            case .profile: return "Profile"
-            case .lists: return "Lists"
-            case .bookmark: return "Bookmark"
-            case .trackingRun: return "Tracking Run"
-            case .logout: return "Logout"
+        case .profile: return "Profile"
+        case .trackingRun: return "Tracking Run"
+        case .logout: return "Logout"
         }
     }
-
+    
     var image: String {
         switch self {
-            case .profile: return "person"
-            case .lists: return "list.bullet"
-            case .bookmark: return "bookmark"
-            case .trackingRun: return "figure.run.square.stack"
-            case .logout: return "arrow.left.square"
+        case .profile: return "person"
+        case .trackingRun: return "figure.run.square.stack"
+        case .logout: return "arrow.left.square"
         }
     }
 }

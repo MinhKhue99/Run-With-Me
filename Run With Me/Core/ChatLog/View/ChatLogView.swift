@@ -12,7 +12,7 @@ struct ChatLogView: View {
     // MARK: - property
     @ObservedObject var chatLogViewModel: ChatLogViewModel
     static let emptyScrollToString = "Empty"
-    
+    @Environment(\.dismiss) private var dismiss
 //    let chatUser: User?
 //    init(chatUser: User?) {
 //        self.chatUser = chatUser
@@ -27,6 +27,20 @@ struct ChatLogView: View {
             Text(chatLogViewModel.errorMessage)
         }
         .navigationTitle(chatLogViewModel.chatUser?.fullname ?? "")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                    
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.backward")
+                        Text("Back")
+                    }
+                }
+            }
+        }
+        .navigationBarBackButtonHidden(true)
         .onDisappear {
             chatLogViewModel.firestoreListener?.remove()
         }
@@ -54,7 +68,9 @@ extension ChatLogView {
             
             Button(action: {
                 //send message
-                chatLogViewModel.sendMessage()
+                if chatLogViewModel.message.isNotEmpty {
+                    chatLogViewModel.sendMessage()
+                }
             }, label: {
                 Text("Send")
                     .foregroundColor(.white)

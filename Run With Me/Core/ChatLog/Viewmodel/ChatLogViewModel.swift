@@ -39,19 +39,17 @@ class ChatLogViewModel: ObservableObject {
             .collection(fromId)
             .document()
         
-        if (!self.message.isEmpty) {
-            document.setData(messageData) {error in
-                if let error = error {
-                    self.errorMessage = error.localizedDescription
-                    Logger.shared.debugPrint(error.localizedDescription, fuction: "sendMessage")
-                    return
-                }
-                
-                self.persistResentMessage()
-                
-                self.message = ""
-                self.count += 1
+        document.setData(messageData) {error in
+            if let error = error {
+                self.errorMessage = error.localizedDescription
+                Logger.shared.debugPrint(error.localizedDescription, fuction: "sendMessage")
+                return
             }
+            
+            self.persistResentMessage()
+            
+            self.message = ""
+            self.count += 1
         }
         
         recipientMessageDocument.setData(messageData) {error in
@@ -110,7 +108,6 @@ class ChatLogViewModel: ObservableObject {
                     if change.type == .added {
                         if let message = try? change.document.data(as: Message.self) {
                             self.chatMessages.append(message)
-                            Logger.shared.debugPrint("Appending chatMessage in ChatLogView: \(Date())")
                         }
                         
                         

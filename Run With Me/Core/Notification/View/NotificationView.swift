@@ -9,10 +9,15 @@ import SwiftUI
 
 struct NotificationView: View {
     // MARK: - property
-    @ObservedObject private var notificationViewModel = NotificationViewModel()
+    @ObservedObject private var viewModel = NotificationViewModel()
     var body: some View {
-        VStack {
-            Text("NotificationView")
+        ScrollView {
+            LazyVStack(spacing: 20) {
+                ForEach(viewModel.notifications) { notification in
+                    NotificationRowView(notificationRowViewModel: NotificationRowViewModel(notification: notification))
+                        .padding(.top)
+                }
+            }
         }
     }
 }

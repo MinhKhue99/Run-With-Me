@@ -11,38 +11,38 @@ struct FeedView: View {
     // MARK: - property
     @State private var isShowNewPostView: Bool = false
     @ObservedObject private var feedViewModel = FeedViewModel()
+    @State private var isShowingMenu: Bool = false
     
     // MARK: - body
     var body: some View {
-        ZStack(alignment: .bottomTrailing) {
-            ScrollView(.vertical, showsIndicators: false) {
-                ForEach(feedViewModel.posts) {post in
-                    PostRowView(post: post)
+            ZStack(alignment: .bottomTrailing) {
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVStack(spacing: 20) {
+                        ForEach(feedViewModel.posts) {post in
+                            PostRowView(postRowViewModel: PostRowViewModel(post: post))
+                        }
+                    }
+                }
+
+                Button(action: {
+                    isShowNewPostView.toggle()
+                }, label: {
+                    Image(systemName: "pencil")
+                        .resizable()
+                        .renderingMode(.template)
+                        .frame(width: 28, height: 28)
                         .padding()
+                })
+                .background(Color(.black))
+                .foregroundColor(.white)
+                .clipShape(Circle())
+                .padding()
+                .fullScreenCover(isPresented: $isShowNewPostView) {
+                    NewPostView()
                 }
             }
-
-            Button(action: {
-                isShowNewPostView.toggle()
-            }, label: {
-                Image(systemName: "pencil")
-                    .resizable()
-                    .renderingMode(.template)
-                    .frame(width: 28, height: 28)
-                    .padding()
-            })
-            .background(Color(.systemBlue))
-            .foregroundColor(.white)
-            .clipShape(Circle())
-            .padding()
-            .fullScreenCover(isPresented: $isShowNewPostView) {
-                NewPostView()
-            }
-        }
-        .navigationTitle("Home")
-        .navigationBarTitleDisplayMode(.inline)
-        .refreshable {
-            feedViewModel.fetchPosts()
+            .refreshable {
+                feedViewModel.fetchPosts()
         }
     }
 }

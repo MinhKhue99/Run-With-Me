@@ -13,12 +13,6 @@ struct ChatLogView: View {
     @ObservedObject var chatLogViewModel: ChatLogViewModel
     static let emptyScrollToString = "Empty"
     @Environment(\.dismiss) private var dismiss
-//    let chatUser: User?
-//    init(chatUser: User?) {
-//        self.chatUser = chatUser
-//        self.chatLogViewModel = .init(chatUser: chatUser)
-//    }
-    
     
     // MARK: - body
     var body: some View {

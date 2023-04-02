@@ -10,27 +10,22 @@ import SwiftUI
 struct ExploreView: View {
     
     // MARK: - property
-    @ObservedObject private var exploreViewModel = ExploreViewModel()
+    @ObservedObject var exploreViewModel = ExploreViewModel()
+    @State private var inSearchMode = false
     // MARK: - body
     var body: some View {
         NavigationView {
             VStack {
-                SearchBarView(text: $exploreViewModel.searchText)
+                SearchBarView(text: $exploreViewModel.searchText, isEditing: $inSearchMode)
                     .padding()
                 ScrollView {
-                    LazyVStack {
-                        ForEach(exploreViewModel.searchableUser) {user in
-                            NavigationLink {
-                                ProfileView(user: user)
-                            } label: {
-                                UserRowView(user: user)
-                            }
-                        }
+                    if inSearchMode {
+                        UserListView(exploreViewModel: exploreViewModel)
+                    } else {
+                        PostGridView(config: .explore)
                     }
                 }
             }
-            .navigationTitle("Explore")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

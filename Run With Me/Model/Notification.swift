@@ -16,19 +16,24 @@ enum NotificationType: Int, Decodable {
     
     var notificationMessage: String {
         switch self {
-        case .like: return "liked your post"
-        case .comment: return "commented on your post"
-        case .follow: return "started following you"
+        case .like: return " liked your post"
+        case .comment: return " commented on your post"
+        case .follow: return " started following you"
         case .message: return "You have a new message"
         }
     }
 }
 
 struct Notification: Identifiable, Decodable {
-    @DocumentID var uid: String?
-    var postImageUrl: String?
+    @DocumentID var id: String?
     var postId: String?
+    let username: String
+    let profileImageUrl: String
     let timestamp: Timestamp
     let type: NotificationType
-    let id: String
+    let uid: String
+    
+    var isFollowed: Bool? = false
+    var post: Post?
+    var user: User?
 }

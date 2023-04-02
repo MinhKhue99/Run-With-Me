@@ -33,6 +33,6 @@ struct AuthHeaderView: View {
 
 struct AuthHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthHeaderView(mainTitle: "Hello", subTitle: "Welcome Back")
+        AuthHeaderView(mainTitle: "Run", subTitle: "With Me")
     }
 }

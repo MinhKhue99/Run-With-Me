@@ -23,13 +23,9 @@ struct UserRowView: View {
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(user.fullname)
-                    .font(.subheadline)
-                    .foregroundColor(.black)
-                    .bold()
-
-                Text("@\(user.username)")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .font(.system(size: 14, weight: .semibold))
+                Text(user.username)
+                    .font(.system(size: 14))
             }
             Spacer()
         }
@@ -44,7 +40,7 @@ struct UserRowView_Previews: PreviewProvider {
         UserRowView(user: User(
             username: "bebo",
             fullname: "Phạm Minh Khuê",
-            profileImageUrl: "",
+            profileImageUrl: "https://firebasestorage.googleapis.com:443/v0/b/runwithme-39a61.appspot.com/o/profile_image%2FE598E86F-0C12-4BBA-AAF0-D85F43E84DD1?alt=media&token=9ff733f0-dac6-47de-8652-52472a4fc621",
             email: "test1@gmail.com")
         )
     }

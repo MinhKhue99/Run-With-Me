@@ -45,7 +45,7 @@ extension ContentView {
                     Color(.black)
                         .opacity(isShowingMenu ? 0.25 : 0)
                 }.onTapGesture {
-                    withAnimation(.easeInOut(duration: 0.5)) {
+                    withAnimation(.easeOut(duration: 0.5)) {
                         isShowingMenu = false
                     }
                 }
@@ -56,27 +56,6 @@ extension ContentView {
                 .offset(x: isShowingMenu ? 0 : -300 , y: 0)
                 .background(isShowingMenu ? Color.white : Color.clear)
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                if let user = viewModel.currentUser {
-                    Button(action: {
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            isShowingMenu.toggle()
-                        }
-                    }, label: {
-                        KFImage(URL(string: user.profileImageUrl))
-                            .resizable()
-                            .scaledToFill()
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.gray, lineWidth: 0.75))
-                            .frame(width: 32, height: 32)
-                    })
-                }
-            }
-        }
-        .onAppear {
-            isShowingMenu = false
-        }
+        .toolbar(.hidden)
     }
 }

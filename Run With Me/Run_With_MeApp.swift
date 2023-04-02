@@ -21,14 +21,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct Run_With_MeApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var authViewModel = AuthViewModel()
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
                ContentView()
             }
-            .environmentObject(authViewModel)
+            .environmentObject(AuthViewModel.shared)
         }
     }
 }

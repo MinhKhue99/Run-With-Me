@@ -10,7 +10,6 @@ import SwiftUI
 class ExploreViewModel: ObservableObject {
     @Published var users = [User]()
     @Published var searchText = ""
-    let userService = UserService()
     
     init() {
         fetchUsers()
@@ -29,7 +28,7 @@ class ExploreViewModel: ObservableObject {
     }
     
     func fetchUsers() {
-        userService.fetchUsers { users in
+        UserService.fetchUsers { users in
             self.users = users
         }
     }

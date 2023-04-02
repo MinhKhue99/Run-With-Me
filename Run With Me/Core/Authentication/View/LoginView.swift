@@ -55,7 +55,7 @@ struct LoginView: View {
         VStack {
 
                 // MARK: - header
-            AuthHeaderView(mainTitle: "Hello", subTitle: "Welcome Back")
+            AuthHeaderView(mainTitle: "Run", subTitle: "With Me")
 
             VStack(spacing: 40) {
                 InputTextField(imageName: "envelope", placeholderText: "Email", text: $email)
@@ -71,7 +71,7 @@ struct LoginView: View {
             HStack {
                 Spacer()
                 NavigationLink {
-                    Text("reset passwordview")
+                    ResetPasswordView()
                 } label: {
                     Text("Forgot Password?")
                         .font(.caption)

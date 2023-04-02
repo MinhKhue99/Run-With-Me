@@ -6,30 +6,49 @@
 //
 
 import Firebase
+import FirebaseFirestoreSwift
 
 class CommentViewModel: ObservableObject {
-    @Published var comment: String = ""
-    @Published var comments = [Comment]()
-    @Published var showLoader = false
-    let commentService = CommentService()
-    var post: Post
-    var user: User
     
-    init(post: Post, user: User) {
+    @Published var comments = [Comment]()
+    private let post: Post
+    
+    init(post: Post) {
         self.post = post
-        self.user = user
         fetchComments()
     }
     
-    func uploadComment() {
-        commentService.uploadComment(comment: comment, postId: post.uid, user: user) { result in
-            self.showLoader = true
-        }
+    func uploadComment(commentText: String) {
+        guard let user = AuthViewModel.shared.currentUser else { return }
+        guard let postId = post.id else { return }
+        let data: [String: Any] = ["username": user.username,
+                                   "profileImageUrl": user.profileImageUrl,
+                                   "uid": user.id ?? "",
+                                   "timestamp": Timestamp(date: Date()),
+                                   "postOwnerUid": post.ownerId,
+                                   "commentText": commentText]
+        
+        COLLECTION_POSTS.document(postId)
+            .collection("post-comments")
+            .addDocument(data: data) {error in
+                if let error = error {
+                    Logger.shared.debugPrint("\(error)", fuction: "uploadComment")
+                    return
+                }
+            }
+        NotificationService.pushNotification(toUid: self.post.ownerId, type: .comment, post: self.post)
     }
     
     func fetchComments() {
-        commentService.fetchComment(forPost: post.uid) { comments in
-            self.comments = comments
+        guard let postId = post.id else { return }
+        let query = COLLECTION_POSTS
+            .document(postId)
+            .collection("post-comments")
+            .order(by: "timestamp", descending: true)
+            
+        query.addSnapshotListener {snapshot, _ in
+            guard let addDocs = snapshot?.documentChanges.filter({$0.type == .added}) else { return }
+            self.comments.append(contentsOf: addDocs.compactMap({try? $0.document.data(as: Comment.self)}))
         }
     }
 }

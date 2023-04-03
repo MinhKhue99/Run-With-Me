@@ -67,6 +67,17 @@ class AuthViewModel: ObservableObject {
         try? Auth.auth().signOut()
     }
     
+    // MARK: - reset password
+    func resetPassword(withEmail email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                Logger.shared.debugPrint("error: \(error)", fuction: "resetPassword")
+                return
+            }
+            Logger.shared.debugPrint("successful sent link")
+        }
+    }
+    
     func uploadProfileImage(_ image: UIImage) {
         guard let uid = tempUserSession?.uid else { return }
         

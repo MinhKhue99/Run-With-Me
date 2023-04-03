@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-
-        // MARK: - property
+    
+    // MARK: - property
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var errorMessage: String = ""
@@ -49,14 +49,13 @@ struct LoginView: View {
         }
         
     }
-
+    
     // MARK: - body
     var body: some View {
         VStack {
-
-                // MARK: - header
+            // MARK: - header
             AuthHeaderView(mainTitle: "Run", subTitle: "With Me")
-
+            
             VStack(spacing: 40) {
                 InputTextField(imageName: "envelope", placeholderText: "Email", text: $email)
                     .textContentType(.emailAddress)
@@ -67,20 +66,20 @@ struct LoginView: View {
             }
             .padding(.horizontal, 32)
             .padding(.top, 44)
-
+            
             HStack {
                 Spacer()
                 NavigationLink {
-                    ResetPasswordView()
+                    ResetPasswordView(email: $email)
                 } label: {
-                    Text("Forgot Password?")
+                    Text("Forget Password?")
                         .font(.caption)
                         .fontWeight(.semibold)
                         .foregroundColor(Color(.systemBlue))
                         .padding(.trailing, 24)
                 }
             }
-
+            
             Button(action: {
                 login()
             }, label: {
@@ -96,9 +95,9 @@ struct LoginView: View {
             .alert(isPresented: $isShowAlert) {
                 Alert(title: Text(alertTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
             }
-
+            
             Spacer()
-
+            
             NavigationLink {
                 RegistrationView()
                     .toolbar(.hidden)
@@ -106,7 +105,7 @@ struct LoginView: View {
                 HStack {
                     Text("Don't have an acount?")
                         .font(.footnote)
-
+                    
                     Text("Sign up")
                         .font(.footnote)
                         .fontWeight(.semibold)
@@ -114,8 +113,6 @@ struct LoginView: View {
                 .padding(.bottom, 32)
                 .foregroundColor(Color(.systemBlue))
             }
-
-
         }
         .ignoresSafeArea()
         .toolbar(.hidden)

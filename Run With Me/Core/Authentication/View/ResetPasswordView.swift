@@ -8,13 +8,72 @@
 import SwiftUI
 
 struct ResetPasswordView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    // MARK: - property
+    @Binding private var email: String
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
+    
+    init(email: Binding<String>) {
+        self._email = email
     }
-}
-
-struct ResetPasswordView_Previews: PreviewProvider {
-    static var previews: some View {
-        ResetPasswordView()
+    
+    // MARK: - body
+    var body: some View {
+        VStack {
+            // MARK: - header
+            AuthHeaderView(mainTitle: "Run", subTitle: "With Me")
+            
+            Text("Reset Password")
+                .font(.system(size: 30, weight: .semibold))
+            
+            VStack(alignment: .trailing){
+                Text("enter the email addsociated with your account\nand we'll send an email with instructions to\nreset your password")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
+            VStack(spacing: 10) {
+                InputTextField(imageName: "envelope", placeholderText: "Email", text: $email)
+                    .textContentType(.emailAddress)
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+                    .keyboardType(.emailAddress)
+            }
+            .padding(.horizontal, 32)
+            .padding(.top, 44)
+            
+            Button(action: {
+                authViewModel.resetPassword(withEmail: email)
+            }, label: {
+                Text("Send Instructions")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(width: 340, height: 50)
+                    .background(Color(.systemBlue))
+                    .clipShape(Capsule())
+                    .padding()
+            })
+            
+            Spacer()
+            
+            NavigationLink {
+                LoginView()
+                    .toolbar(.hidden)
+            } label: {
+                HStack {
+                    Text("Remember password?")
+                        .font(.footnote)
+                        .foregroundColor(.black)
+                    
+                    Text("Sign in")
+                        .font(.footnote)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.orange)
+                }
+                .padding(.bottom, 32)
+                .foregroundColor(Color(.systemBlue))
+            }
+        }
+        .ignoresSafeArea()
+        .toolbar(.hidden)
     }
 }

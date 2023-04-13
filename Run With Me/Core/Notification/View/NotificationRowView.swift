@@ -29,9 +29,11 @@ struct NotificationRowView: View {
                         .clipShape(Circle())
                     
                     Text(viewModel.notification.username)
-                        .font(.system(size: 15, weight: .semibold)) +
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundColor(.black) +
                     Text(viewModel.notification.type.notificationMessage)
-                        .font(.system(size: 15)) +
+                        .font(.system(size: 15))
+                        .foregroundColor(.black) +
                     Text(" \(viewModel.timestampString)")
                         .font(.system(size: 12))
                         .foregroundColor(Color(.gray))

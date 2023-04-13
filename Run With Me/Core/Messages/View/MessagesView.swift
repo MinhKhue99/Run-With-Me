@@ -14,10 +14,10 @@ struct MessagesView: View {
     // MARK: - property
     @ObservedObject private var authViewModel = AuthViewModel()
     @ObservedObject private var messagesViewModel = MessagesViewModel()
+    @ObservedObject private var chatLogViewModel = ChatLogViewModel(chatUser: nil)
     @State private var isShowNewMessageScreen = false
     @State private var isNavigateToChatLogView = false
     @State var chatUser: User?
-    private var chatLogViewModel = ChatLogViewModel(chatUser: nil)
     
     // MARK: - body
     var body: some View {
@@ -48,7 +48,6 @@ struct MessagesView: View {
                                 }
                             }
                             Spacer()
-                            Image(systemName: "phone.fill")
                         }
                         .padding()
                     }

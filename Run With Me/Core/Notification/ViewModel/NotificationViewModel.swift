@@ -14,13 +14,11 @@ class NotificationViewModel: ObservableObject {
     
     init() {
         fetchNotification()
-        Logger.shared.debugPrint("noti: \(notifications)")
     }
     
     func fetchNotification() {
         NotificationService.fetchNotification {notifications in
             self.notifications = notifications
-            print("notifications: \(self.notifications)")
         }
     }
 }

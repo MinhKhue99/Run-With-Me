@@ -80,7 +80,6 @@ class PostRowViewModel: ObservableObject {
     func fetchPostUser() {
         PostService.fetchPostUser(withUid: post.ownerId) { user in
             self.post.user = user
-            print("user: \(String(describing: self.post.user?.username))")
         }
     }
 }

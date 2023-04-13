@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @State private var selectedIndex: Int = 0
-
+    @State var selectedIndex: Int = 0
+//    let user: User
     var body: some View {
         NavigationView {
             TabView(selection: $selectedIndex) {
@@ -49,10 +49,20 @@ struct MainTabView: View {
                         Image(systemName: "envelope")
                     }
                     .tag(3)
+//                ProfileView(user: user)
+//                    .onTapGesture {
+//                        self.selectedIndex = 4
+//                        Logger.shared.debugPrint("selectedIndex: \(self.selectedIndex)")
+//                    }
+//                    .tabItem {
+//                        Image(systemName: "person")
+//                    }
+//                    .tag(4)
             }
-            .navigationTitle(tabTile)
-            .navigationBarTitleDisplayMode(.inline)
-            .accentColor(.black)
+            .toolbar(.hidden)
+//            .navigationTitle(tabTile)
+//            .navigationBarTitleDisplayMode(.inline)
+//            .accentColor(.black)
         }
 
     }
@@ -63,13 +73,8 @@ struct MainTabView: View {
             case 1: return "Explore"
             case 2: return "Notification"
             case 3: return "Message"
+            case 4: return "Profile"
             default: return ""
         }
-    }
-}
-
-struct MainTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabView()
     }
 }

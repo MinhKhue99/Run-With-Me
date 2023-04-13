@@ -21,6 +21,9 @@ struct ContentView: View {
                 LoginView()
             } else {
                 mainInterfaceView
+//                if let user = viewModel.currentUser {
+//                    MainTabView(user: user)
+//                }
             }
         }
 
@@ -56,6 +59,29 @@ extension ContentView {
                 .offset(x: isShowingMenu ? 0 : -300 , y: 0)
                 .background(isShowingMenu ? Color.white : Color.clear)
         }
-        .toolbar(.hidden)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Text("Run With Me")
+                    .foregroundColor(.black)
+                    .bold()
+                    .font(.headline)
+                if let user = viewModel.currentUser {
+                    Button {
+                        withAnimation(.easeInOut) {
+                            isShowingMenu.toggle()
+                        }
+                    } label: {
+                        KFImage(URL(string: user.profileImageUrl))
+                            .resizable()
+                            .scaledToFill()
+                            .clipShape(Circle())
+                            .frame(width: 32, height: 32)
+                    }
+                }
+            }
+        }
+        .onAppear {
+            isShowingMenu = false
+        }
     }
 }

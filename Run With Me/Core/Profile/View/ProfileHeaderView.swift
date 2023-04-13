@@ -30,7 +30,7 @@ struct ProfileHeaderView: View {
                     if let stats = profileViewModel.user.stats {
                         UserStatView(value: stats.posts, title: "Posts")
                         UserStatView(value: stats.followers, title: "Followers")
-                        UserStatView(value: stats.followings, title: "Following")
+                        UserStatView(value: stats.followings, title: "Followings")
                     }
                 }
                 .padding(.trailing, 32)
@@ -49,6 +49,12 @@ struct ProfileHeaderView: View {
                     }
                 }
                 Spacer()
+                
+                Image(systemName: "ellipsis.circle")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 25, height: 25)
+                    .padding(.trailing)
             }
             
             HStack(alignment: .center) {

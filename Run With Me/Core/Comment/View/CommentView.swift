@@ -33,6 +33,7 @@ struct CommentView: View {
             CustomInputView(inputtext: $commentText, action: uploadComment)
         }
         .navigationTitle("Comment")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
@@ -43,6 +44,7 @@ struct CommentView: View {
                         Image(systemName: "chevron.backward")
                         Text("Back")
                     }
+                    .foregroundColor(.black)
                 }
             }
         }

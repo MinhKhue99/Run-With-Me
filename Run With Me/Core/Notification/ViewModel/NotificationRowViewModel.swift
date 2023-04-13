@@ -57,7 +57,6 @@ class NotificationRowViewModel: ObservableObject {
     func fetchNotificationUser() {
         NotificationService.fetchNotificationUser(withUid: notification.uid) { user in
             self.notification.user = user
-            print("user: \(String(describing: self.notification.user?.username))")
         }
     }
 }

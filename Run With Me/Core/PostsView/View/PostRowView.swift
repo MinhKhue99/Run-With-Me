@@ -12,6 +12,9 @@ struct PostRowView: View {
     
     // MARK: -  property
     @ObservedObject var postRowViewModel: PostRowViewModel
+    @State var chatUser: User?
+    @State private var isNavigateToChatLogView = false
+    @ObservedObject private var chatLogViewModel = ChatLogViewModel(chatUser: nil)
     var didLike: Bool { return postRowViewModel.post.didLike ?? false }
     init(postRowViewModel: PostRowViewModel) {
         self.postRowViewModel = postRowViewModel
@@ -32,6 +35,7 @@ struct PostRowView: View {
                         
                         Text(postRowViewModel.post.ownerUsername)
                             .font(.system(size: 14, weight: .semibold))
+                            .foregroundColor(.black)
                     }
                 }
                 
@@ -74,17 +78,22 @@ struct PostRowView: View {
                         .padding(4)
                 }
                 
-                Button(action: {
-                    //send message
-                }, label: {
-                    Image(systemName: "paperplane")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 20, height: 20)
-                        .font(.system(size: 20))
-                        .foregroundColor(.black)
-                        .padding(4)
-                })
+                NavigationLink(destination: ChatLogView(chatLogViewModel: chatLogViewModel)) {
+                    Button(action: {
+                        self.chatUser = postRowViewModel.post.user
+                        self.isNavigateToChatLogView.toggle()
+                        self.chatLogViewModel.chatUser = postRowViewModel.post.user
+                        self.chatLogViewModel.fetchMessages()
+                    }, label: {
+                        Image(systemName: "paperplane")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 20, height: 20)
+                            .font(.system(size: 20))
+                            .foregroundColor(.black)
+                            .padding(4)
+                    })
+                }
             }
             .padding(.horizontal, 8)
             

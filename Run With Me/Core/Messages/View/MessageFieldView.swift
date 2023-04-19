@@ -47,6 +47,7 @@ struct CustomtextField: View {
             }
             
             TextField("", text: $text, onEditingChanged: edtingChanged, onCommit: commit)
+                .foregroundColor(Color.black)
         }
     }
 }

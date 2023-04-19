@@ -21,10 +21,4 @@ struct Post: Identifiable, Decodable {
     
     var user: User?
     var didLike: Bool? = false
-    
-//    var timeAgo: String {
-//        let formatter = RelativeDateTimeFormatter()
-//        formatter.unitsStyle = .abbreviated
-//        return formatter.localizedString(for: timestamp, relativeTo: Date())
-//    }
 }

@@ -54,17 +54,18 @@ struct EditProfileView: View {
         }
         
         if (selectedImage == nil) {
-            let url = URL(string: viewModel.user.profileImageUrl)!
-            DispatchQueue.main.async {
-                let data = try? Data(contentsOf: url)
-                if let imageData = data {
-                    let image = UIImage(data: imageData)
-                    selectedImage = image
-                }
+            if let url = URL(string: viewModel.user.profileImageUrl) {
+                URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    guard let imageData = data else { return }
+                    
+                    DispatchQueue.main.async {
+                        selectedImage = UIImage(data: imageData)
+                    }
+                }.resume()
             }
         }
         
-        viewModel.saveUserBio(bioText, email: email, username: username, fullname: fullname, image: selectedImage!)
+        viewModel.saveUserBio(bioText, email: email, username: username, fullname: fullname, image: selectedImage)
     }
     
     // MARK: - body

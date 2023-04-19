@@ -35,7 +35,7 @@ struct PostRowView: View {
                         
                         Text(postRowViewModel.post.ownerUsername)
                             .font(.system(size: 14, weight: .semibold))
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("Black"))
                     }
                 }
                 
@@ -74,7 +74,7 @@ struct PostRowView: View {
                         .scaledToFill()
                         .frame(width: 20, height: 20)
                         .font(.system(size: 20))
-                        .foregroundColor(.black)
+                        .foregroundColor(Color("Black"))
                         .padding(4)
                 }
                 
@@ -90,7 +90,7 @@ struct PostRowView: View {
                             .scaledToFill()
                             .frame(width: 20, height: 20)
                             .font(.system(size: 20))
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("Black"))
                             .padding(4)
                     })
                 }
@@ -100,16 +100,18 @@ struct PostRowView: View {
             //like
             Text(postRowViewModel.post.likes < 2 ? "\(postRowViewModel.post.likes) like" : "\(postRowViewModel.post.likes) likes")
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.black)
+                .foregroundColor(Color("Black"))
                 .padding(.horizontal, 8)
             
             //caption
             HStack {
                 Text(postRowViewModel.post.ownerUsername)
                     .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(Color("Black"))
                 +
                 Text(" \(postRowViewModel.post.caption)")
                     .font(.system(size: 14))
+                    .foregroundColor(Color("Black"))
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 1)

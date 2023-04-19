@@ -24,8 +24,10 @@ struct UserRowView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(user.fullname)
                     .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(Color("Black"))
                 Text(user.username)
                     .font(.system(size: 14))
+                    .foregroundColor(Color("Black"))
             }
             Spacer()
         }

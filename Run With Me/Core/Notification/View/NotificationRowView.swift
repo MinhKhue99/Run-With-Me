@@ -24,7 +24,7 @@ struct NotificationRowView: View {
                 NavigationLink(destination: ProfileView(user: user)) {
                     KFImage(URL(string: viewModel.notification.profileImageUrl))
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
                         .frame(width: 40, height: 40)
                         .clipShape(Circle())
                     

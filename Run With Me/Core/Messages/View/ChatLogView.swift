@@ -53,7 +53,7 @@ extension ChatLogView {
             }
         }
         .padding(.top, 10)
-        .background(.white)
+        .background(Color("White"))
         .cornerRadius(30, corners: [.topLeft, .topRight])
     }
 }

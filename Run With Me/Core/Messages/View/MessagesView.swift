@@ -38,6 +38,7 @@ struct MessagesView: View {
                             VStack(alignment: .leading,spacing: 4) {
                                 Text(user.fullname)
                                     .font(.system(size: 20, weight: .bold))
+                                    .foregroundColor(Color("Black"))
                                 HStack {
                                     Circle()
                                         .foregroundColor(.green)
@@ -100,7 +101,7 @@ extension MessagesView {
                                 
                                 VStack(alignment: .leading) {
                                     Text(recentMessage.fullname)
-                                        .foregroundColor(.black)
+                                        .foregroundColor(Color("Black"))
                                         .font(.system(size: 16, weight: .bold))
                                     Text(recentMessage.message)
                                         .font(.system(size: 14))

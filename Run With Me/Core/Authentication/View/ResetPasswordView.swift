@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import AlertToast
 
 struct ResetPasswordView: View {
     // MARK: - property
     @Binding private var email: String
+    @State private var showToast = false
     @EnvironmentObject var authViewModel: AuthViewModel
     
     
@@ -43,6 +45,7 @@ struct ResetPasswordView: View {
             
             Button(action: {
                 authViewModel.resetPassword(withEmail: email)
+                showToast.toggle()
             }, label: {
                 Text("Send Instructions")
                     .font(.headline)
@@ -72,6 +75,12 @@ struct ResetPasswordView: View {
                 .padding(.bottom, 32)
                 .foregroundColor(Color(.systemBlue))
             }
+        }
+        .toast(isPresenting: $showToast) {
+            AlertToast(displayMode: .alert,
+                       type: .complete(.green),
+            title: "Reset Password",
+            subTitle: "successful sent link")
         }
         .ignoresSafeArea()
         .toolbar(.hidden)

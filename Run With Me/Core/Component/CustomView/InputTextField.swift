@@ -32,7 +32,7 @@ struct InputTextField: View {
             }
 
             Divider()
-                .foregroundColor(Color(.black))
+                .foregroundColor(Color("Black"))
         }
     }
 }

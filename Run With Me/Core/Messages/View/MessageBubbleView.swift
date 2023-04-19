@@ -20,10 +20,11 @@ struct MessageBubbleView: View {
             HStack {
                 Text(message.message)
                     .padding()
+                    .foregroundColor(.black)
                     .background(message.fromId == Auth.auth().currentUser?.uid ? Color("Peach") : Color("Gray"))
                     .cornerRadius(20)
             }
-            .frame(maxWidth: 300, alignment: message.fromId == Auth.auth().currentUser?.uid ? .trailing : .leading)
+            .frame(maxWidth: UIScreen.main.bounds.width - 90, alignment: message.fromId == Auth.auth().currentUser?.uid ? .trailing : .leading)
         }
         .frame(maxWidth: .infinity, alignment: message.fromId == Auth.auth().currentUser?.uid ? .trailing : .leading)
         .padding(.horizontal, 10)

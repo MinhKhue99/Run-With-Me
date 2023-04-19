@@ -24,15 +24,17 @@ struct CommentRowView: View {
             
             Text(comment.username)
                 .font(.system(size: 15, weight: .semibold))
+                .foregroundColor(Color("Black"))
             Text(comment.commentText)
                 .font(.system(size: 15))
+                .foregroundColor(Color("Black"))
             
             Spacer()
             
             //time
             Text(comment.timestampString)
                 .font(.system(size: 12))
-                .foregroundColor(Color(.gray))
+                .foregroundColor(Color("Gray"))
                 .padding(.horizontal)
         }
     }

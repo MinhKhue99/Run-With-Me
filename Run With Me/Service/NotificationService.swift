@@ -39,7 +39,7 @@ struct NotificationService {
             .document(uid)
             .collection("user-notifications")
             .order(by: "timestamp", descending: true)
-        query.getDocuments { snapshot, _ in
+        query.addSnapshotListener { snapshot, _ in
             guard let documments = snapshot?.documents else { return }
             let notifications = documments.compactMap({try? $0.data(as: Notification.self)})
             completion(notifications)
@@ -49,7 +49,7 @@ struct NotificationService {
     static func fetchNotificationPost(postId: String, completion: @escaping(Post?) -> Void) {
         COLLECTION_POSTS
             .document(postId)
-            .getDocument { snapshot, _ in
+            .addSnapshotListener { snapshot, _ in
                 let post = try? snapshot?.data(as: Post.self)
                 completion(post)
             }
@@ -58,7 +58,7 @@ struct NotificationService {
     static func fetchNotificationUser(withUid uid: String, completion: @escaping(User?) -> Void) {
         COLLECTION_USERS
             .document(uid)
-            .getDocument {snapshot, _ in
+            .addSnapshotListener {snapshot, _ in
                 let user = try? snapshot?.data(as: User.self)
                 completion(user)
             }

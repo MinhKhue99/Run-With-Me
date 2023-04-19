@@ -32,7 +32,7 @@ struct NewMessageView: View {
                             
                             Text(user.fullname)
                                 .font(.headline)
-                                .foregroundColor(.black)
+                                .foregroundColor(Color("Black"))
                             Spacer()
                         }
                         .padding(.horizontal)
@@ -47,6 +47,7 @@ struct NewMessageView: View {
                             presentationMode.wrappedValue.dismiss()
                         }, label: {
                             Text("Cancel")
+                                .foregroundColor(Color("Black"))
                         })
                     }
                 }

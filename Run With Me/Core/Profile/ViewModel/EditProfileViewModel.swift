@@ -15,7 +15,7 @@ class EditProfileViewModel: ObservableObject {
         self.user = user
     }
     
-    func saveUserBio(_ bio: String, email: String, username: String, fullname: String, image: UIImage) {
+    func saveUserBio(_ bio: String, email: String, username: String, fullname: String, image: UIImage?) {
         guard let uid = user.id else { return }
         
         ImageUploader.uploadImage(image: image, type: .profile) { profileImageUrl in

@@ -44,7 +44,7 @@ struct CommentView: View {
                         Image(systemName: "chevron.backward")
                         Text("Back")
                     }
-                    .foregroundColor(.black)
+                    .foregroundColor(Color("Black"))
                 }
             }
         }

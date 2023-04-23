@@ -25,15 +25,15 @@ struct PostRowView: View {
         VStack(alignment: .leading) {
              //user info
             HStack {
-                if let user = postRowViewModel.post.user {
+                if let user = self.postRowViewModel.post.user {
                     NavigationLink(destination: ProfileView(user: user)) {
-                        KFImage(URL(string: postRowViewModel.post.ownerImageUrl))
+                        KFImage(URL(string: user.profileImageUrl))
                             .resizable()
                             .scaledToFill()
                             .frame(width: 36, height: 36)
                             .clipShape(Circle())
                         
-                        Text(postRowViewModel.post.ownerUsername)
+                        Text(user.username)
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundColor(Color("Black"))
                     }
@@ -64,7 +64,7 @@ struct PostRowView: View {
                         .scaledToFill()
                         .frame(width: 20, height: 20)
                         .font(.system(size: 20))
-                        .foregroundColor(didLike ? .red : .black)
+                        .foregroundColor(didLike ? .red : Color("Black"))
                         .padding(4)
                 })
                 
@@ -104,18 +104,19 @@ struct PostRowView: View {
                 .padding(.horizontal, 8)
             
             //caption
-            HStack {
-                Text(postRowViewModel.post.ownerUsername)
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(Color("Black"))
-                +
-                Text(" \(postRowViewModel.post.caption)")
-                    .font(.system(size: 14))
-                    .foregroundColor(Color("Black"))
+            if postRowViewModel.post.caption.isNotEmpty{
+                HStack {
+                    Text(postRowViewModel.post.ownerUsername)
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(Color("Black"))
+                    +
+                    Text(" \(postRowViewModel.post.caption)")
+                        .font(.system(size: 14))
+                        .foregroundColor(Color("Black"))
+                }
+                .padding(.horizontal, 8)
+                .padding(.vertical, 1)
             }
-            .padding(.horizontal, 8)
-            .padding(.vertical, 1)
-            
             Divider()
         }
     }

@@ -51,9 +51,5 @@ extension View {
             .background(Color.accentColor)
             .cornerRadius(15)
     }
-    
-    func getRect() -> CGRect {
-        return UIScreen.main.bounds
-    }
 }
 

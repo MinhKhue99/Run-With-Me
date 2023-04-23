@@ -18,6 +18,10 @@ extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundCorner(radius: radius, corners: corners))
     }
+    
+    func getRect() -> CGRect {
+        return UIScreen.main.bounds
+    }
 }
 
 struct RoundCorner: Shape {

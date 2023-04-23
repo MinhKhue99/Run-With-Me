@@ -11,7 +11,7 @@ import SwiftUI
 
 struct PostService {
     
-    func uploadPost(caption: String,image: UIImage, completion: @escaping(Bool) -> Void) {
+    func uploadPost(caption: String,image: UIImage?, completion: @escaping(Bool) -> Void) {
         guard let user = AuthViewModel.shared.currentUser else { return }
         ImageUploader.uploadImage(image: image, type: .post) {imageUrl in
             
@@ -65,13 +65,26 @@ struct PostService {
             }
     }
     
-    //fetch all post of current user to display in explore
+    //fetch all post of user to display in explore
     static func fetchPostUser(withUid uid: String, completion: @escaping(User?) -> Void) {
         COLLECTION_USERS
             .document(uid)
             .getDocument {snapshot, _ in
                 let user = try? snapshot?.data(as: User.self)
                 completion(user)
+            }
+    }
+    
+    static func checkUserLikedPost(_ post: Post, completion: @escaping(Bool) -> Void) {
+        guard let uid = AuthViewModel.shared.userSession?.uid else { return }
+        guard let postId = post.id else { return }
+        COLLECTION_USERS
+            .document(uid)
+            .collection("user-likes")
+            .document(postId)
+            .addSnapshotListener {snapshot, _ in
+                guard let snapshot = snapshot else { return }
+                completion(snapshot.exists)
             }
     }
    

@@ -13,6 +13,7 @@ struct SlideMenuView: View {
     // MARK: - property
     @EnvironmentObject private var authViewModel: AuthViewModel
     @State private var isShowLogoutoption = false
+    @Binding var showMenu: Bool
     
     // MARK: - body
     var body: some View {

@@ -40,7 +40,8 @@ struct NewPostView: View {
             isShowAlert = true
             return
         }
-        newPostViewModel.uploadPost(withCaption: caption, withImageUrl: selectedImage!)
+        newPostViewModel.uploadPost(withCaption: caption, withImageUrl: selectedImage)
+        presentationMode.wrappedValue.dismiss()
     }
     
     // MARK: - body
@@ -58,7 +59,6 @@ struct NewPostView: View {
 
                 Button(action: {
                     uploadPost()
-                    presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Post")
                         .bold()
@@ -107,7 +107,6 @@ struct NewPostView: View {
                         TextEditor(text: $caption)
                             .padding()
                             .opacity(caption.isEmpty ? 0.5 : 1)
-                            .background(RoundedRectangle(cornerRadius: 10).stroke(Color.brown))
                             .padding()
                     }
                 }

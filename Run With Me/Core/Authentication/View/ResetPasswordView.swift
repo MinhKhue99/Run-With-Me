@@ -12,6 +12,7 @@ struct ResetPasswordView: View {
     // MARK: - property
     @Binding private var email: String
     @State private var showToast = false
+    @State private var loginText = "Remember password?"
     @EnvironmentObject var authViewModel: AuthViewModel
     
     
@@ -45,6 +46,7 @@ struct ResetPasswordView: View {
             
             Button(action: {
                 authViewModel.resetPassword(withEmail: email)
+                self.loginText = "Back to"
                 showToast.toggle()
             }, label: {
                 Text("Send Instructions")
@@ -63,7 +65,7 @@ struct ResetPasswordView: View {
                     .toolbar(.hidden)
             } label: {
                 HStack {
-                    Text("Remember password?")
+                    Text("\(loginText)")
                         .font(.footnote)
                         .foregroundColor(.black)
                     

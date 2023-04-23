@@ -33,7 +33,7 @@ struct NotificationService {
     }
     
     static func fetchNotification(completion: @escaping([Notification]) -> Void) {
-        guard let uid = AuthViewModel.shared.currentUser?.id else { return }
+        guard let uid = AuthViewModel.shared.userSession?.uid else { return }
         
         let query = COLLECTION_NOTIFICATIONS
             .document(uid)

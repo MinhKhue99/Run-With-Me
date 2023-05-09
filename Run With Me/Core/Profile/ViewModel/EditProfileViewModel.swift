@@ -15,9 +15,18 @@ class EditProfileViewModel: ObservableObject {
         self.user = user
     }
     
-    func saveUserBio(_ bio: String, email: String, username: String, fullname: String, image: UIImage?) {
-        guard let uid = user.id else { return }
+    func updateUserInfo(bio: String, email: String, username: String, fullname: String, image: UIImage?) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let currentEmail = user.email
+        let currentUser = Auth.auth().currentUser
         
+        if email != currentEmail {
+            currentUser?.updateEmail(to: email) { error in
+                if let error = error {
+                    Logger.shared.debugPrint("\(error.localizedDescription)", fuction: "updateUserInfo")
+                }
+            }
+        }
         ImageUploader.uploadImage(image: image, type: .profile) { profileImageUrl in
             COLLECTION_USERS
                 .document(uid)
@@ -30,5 +39,6 @@ class EditProfileViewModel: ObservableObject {
                     self.uploadCompleted = true
                 }
         }
+        
     }
 }

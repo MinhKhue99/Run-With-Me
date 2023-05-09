@@ -34,7 +34,7 @@ struct CommentRowView: View {
             //time
             Text(comment.timestampString)
                 .font(.system(size: 12))
-                .foregroundColor(Color("Gray"))
+                .foregroundColor(.gray)
                 .padding(.horizontal)
         }
     }

@@ -15,7 +15,7 @@ enum SlideMenuViewModel: Int, CaseIterable {
     var description: String {
         switch self {
         case .profile: return "Profile"
-        case .trackingRun: return "Tracking Run"
+        case .trackingRun: return "Tracking Workout"
         case .logout: return "Logout"
         }
     }

@@ -25,7 +25,7 @@ struct PostRowView: View {
         VStack(alignment: .leading) {
              //user info
             HStack {
-                if let user = self.postRowViewModel.post.user {
+                if let user = postRowViewModel.post.user {
                     NavigationLink(destination: ProfileView(user: user)) {
                         KFImage(URL(string: user.profileImageUrl))
                             .resizable()

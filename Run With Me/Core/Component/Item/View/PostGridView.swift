@@ -30,6 +30,7 @@ struct PostGridView: View {
                         .scaledToFill()
                         .frame(width: width, height: width)
                         .clipped()
+                        .cornerRadius(5, corners: [.allCorners])
                 }
             }
         })

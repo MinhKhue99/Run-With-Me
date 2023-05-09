@@ -39,6 +39,52 @@ struct PostService {
     
     //fetch all post to display in newsfeed
     static func fetchPosts(completion: @escaping([Post]) -> Void) {
+        var uidFollowingsList = [String]()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        COLLECTION_FOLLOWING
+            .document(uid)
+            .collection("user-followings")
+            .getDocuments {snapshot,error in
+                guard let documents = snapshot?.documents else { return }
+                Logger.shared.debugPrint("documents: \(documents.count)")
+                documents.forEach { document in
+                    uidFollowingsList.append(document.documentID)
+                }
+                uidFollowingsList.append(uid)
+                Logger.shared.debugPrint("list: \(uidFollowingsList.count)")
+                if uidFollowingsList.count < 2 {
+                    COLLECTION_POSTS
+                        .order(by: "timestamp", descending: true)
+                        .getDocuments {snapshot, error in
+                            guard let documents = snapshot?.documents else {
+                                Logger.shared.debugPrint("Error fetching document: \(String(describing: error?.localizedDescription))", fuction: "fetchPosts")
+                                return
+                            }
+                            let posts = documents.compactMap({try? $0.data(as: Post.self)})
+                            completion(posts.sorted(by: {$0.timestamp.compare($1.timestamp) == .orderedDescending }))
+                        }
+                } else {
+                    var totalPosts = [Post]()
+                    uidFollowingsList.forEach { uid in
+                        COLLECTION_POSTS
+                            .whereField("ownerId", isEqualTo: uid)
+                            .getDocuments {snapshot, error in
+                                guard let documents = snapshot?.documents else {
+                                    Logger.shared.debugPrint("Error fetching document: \(String(describing: error?.localizedDescription))", fuction: "fetchPosts")
+                                    return
+                                }
+                                let posts = documents.compactMap({try? $0.data(as: Post.self)})
+                                totalPosts += posts
+                                completion(totalPosts.sorted(by: {$0.timestamp.compare($1.timestamp) == .orderedDescending }))
+                            }
+                    }
+                }
+            }
+    }
+    
+    
+    //fetch all post to display in explore
+    static func fetchAllPosts(completion: @escaping([Post]) -> Void) {
         COLLECTION_POSTS
             .order(by: "timestamp", descending: true)
             .getDocuments {snapshot, error in

@@ -47,16 +47,10 @@ struct TrackingRunView : View {
             if !launchedBefore {
                 launchedBefore = true
                 welcome = true
-                vm.showInfoView = true
             }
         }
         .fullScreenCover(isPresented: $vm.healthUnavailable) {
             ErrorView(systemName: "heart.slash", title: "Health Unavailable", message: "\(NAME) needs access to the Health App to store and load workouts. Unfortunately, this device does not have these capabilities so the app will not work.")
-        }
-        .sheet(isPresented: $vm.showInfoView, onDismiss: {
-            welcome = false
-        }) {
-            InfoView(welcome: welcome)
         }
         .sheet(isPresented: $vm.showPermissionsView) {
             PermissionsView()

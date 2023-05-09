@@ -70,7 +70,6 @@ class ViewModel: NSObject, ObservableObject {
     @Published var degrees = 0.0
     @Published var scale = 1.0
     @Published var pulse = false
-    @Published var showInfoView = false
     @Defaults(key: "shownNoWorkoutsError", defaultValue: false) var shownNoWorkoutsError
     
     // Errors

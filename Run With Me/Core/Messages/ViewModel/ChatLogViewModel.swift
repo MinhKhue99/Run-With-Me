@@ -11,6 +11,7 @@ import FirebaseSharedSwift
 class ChatLogViewModel: ObservableObject {
     
     @Published var message: String = ""
+    @Published var msgPhotoUrl: String = ""
     @Published var errorMessage: String = ""
     @Published var chatMessages = [Message]()
     @Published var count = 0

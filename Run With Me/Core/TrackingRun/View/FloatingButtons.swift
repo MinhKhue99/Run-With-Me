@@ -110,13 +110,6 @@ struct FloatingButtons: View {
                 }
             }
             Divider().frame(height: 48)
-            
-            Button {
-                vm.showInfoView = true
-            } label: {
-                Image(systemName: "info.circle")
-                    .frame(width: 48, height: 48)
-            }
         }
         .font(.system(size: 48/2))
         .materialBackground()

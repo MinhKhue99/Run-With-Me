@@ -17,8 +17,10 @@ class FeedViewModel: ObservableObject {
     }
     
     func fetchPosts() {
-        PostService.fetchPosts { posts in
-            self.posts = posts
+        DispatchQueue.main.async {
+            PostService.fetchPosts { posts in
+                self.posts = posts
+            }
         }
     }
 }

@@ -10,19 +10,16 @@ import SwiftUI
 struct SlideMenuOptionRowView: View {
     let slideMunuViewModel: SlideMenuViewModel
     var body: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: 14) {
             Image(systemName: slideMunuViewModel.image)
-                .font(.headline)
-                .foregroundColor(.gray)
+                .resizable()
+                .renderingMode(.template)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 22, height: 22)
 
             Text(slideMunuViewModel.description)
-                .font(.subheadline)
-                .foregroundColor(.black)
-
-            Spacer()
         }
-        .frame(height: 40)
-        .padding(.horizontal)
+        .foregroundColor(.primary)
     }
 }
 

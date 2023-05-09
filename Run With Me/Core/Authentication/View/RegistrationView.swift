@@ -12,6 +12,7 @@ struct RegistrationView: View {
     // MARK: - property
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var confirmPassword: String = ""
     @State private var fullName: String = ""
     @State private var userName: String = ""
     @State private var errorMessage: String = ""
@@ -24,9 +25,15 @@ struct RegistrationView: View {
     
     private func errorCheck() -> String? {
         if ( email.trimmingCharacters(in: .whitespaces).isEmpty ||
-             password.trimmingCharacters(in: .whitespaces).isEmpty
-        ) {
+             password.trimmingCharacters(in: .whitespaces).isEmpty ||
+             fullName.trimmingCharacters(in: .whitespaces).isEmpty ||
+             userName.trimmingCharacters(in: .whitespaces).isEmpty ||
+             confirmPassword.trimmingCharacters(in: .whitespaces).isEmpty) {
             return "Please fill in all field"
+        }
+        
+        if password.trimmingCharacters(in: .whitespaces) != confirmPassword.trimmingCharacters(in: .whitespaces) {
+            return "Password not match"
         }
         
         return nil
@@ -37,13 +44,13 @@ struct RegistrationView: View {
         self.userName = ""
         self.password = ""
         self.email = ""
+        self.confirmPassword = ""
     }
     
     private func register() {
         if let error = errorCheck() {
             self.errorMessage = error
             isShowAlert = true
-            self.clear()
             return
         }
         authViewModel.register(
@@ -77,6 +84,8 @@ struct RegistrationView: View {
                         .disableAutocorrection(true)
                         .keyboardType(.emailAddress)
                     InputTextField(imageName: "lock", placeholderText: "Password",isSecureField: true ,text: $password)
+                        .textContentType(.password)
+                    InputTextField(imageName: "lock", placeholderText: "Confirm Password",isSecureField: true ,text: $confirmPassword)
                         .textContentType(.password)
                 }
                 .padding(.horizontal, 32)
@@ -112,7 +121,7 @@ struct RegistrationView: View {
                         Text("Already have an acount?")
                             .font(.footnote)
 
-                        Text("Sign in")
+                        Text("Login")
                             .font(.footnote)
                             .fontWeight(.semibold)
                     }

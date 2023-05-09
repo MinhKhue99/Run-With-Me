@@ -631,8 +631,8 @@
 		FAAE8515296338E600EA9D09 /* SlideMenu */ = {
 			isa = PBXGroup;
 			children = (
-				FAAE8517296338F900EA9D09 /* ViewModel */,
 				FAAE8516296338F000EA9D09 /* View */,
+				FAAE8517296338F900EA9D09 /* ViewModel */,
 			);
 			path = SlideMenu;
 			sourceTree = "<group>";

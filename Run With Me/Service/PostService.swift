@@ -11,7 +11,7 @@ import SwiftUI
 
 struct PostService {
     
-    func uploadPost(caption: String,image: UIImage?, completion: @escaping(Bool) -> Void) {
+    static func uploadPost(caption: String,image: UIImage?, completion: @escaping(Bool) -> Void) {
         guard let user = AuthViewModel.shared.currentUser else { return }
         ImageUploader.uploadImage(image: image, type: .post) {imageUrl in
             

@@ -10,14 +10,13 @@ import SwiftUI
 
 class NewPostViewModel: ObservableObject {
     @Published var isUploadedPost: Bool = false
-    let postService = PostService()
     
     func uploadPost(withCaption caption: String, withImageUrl imageUrl: UIImage?) {
-        postService.uploadPost(caption: caption, image: imageUrl) { success in
+        PostService.uploadPost(caption: caption, image: imageUrl) { success in
             if success {
                 self.isUploadedPost = true
             } else {
-                
+                Logger.shared.debugPrint("Error", fuction: "uploadPost")
             }
         }
     }

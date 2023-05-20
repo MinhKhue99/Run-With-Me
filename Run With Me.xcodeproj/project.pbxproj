@@ -88,7 +88,6 @@
 		FAB617C62982C50B00D7D16D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB617C52982C50B00D7D16D /* FeedViewModel.swift */; };
 		FABBD22D29D33D1200A142AA /* CustomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBD22C29D33D1200A142AA /* CustomInputView.swift */; };
 		FAC02931296483740078E603 /* UserStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC02930296483740078E603 /* UserStatsView.swift */; };
-		FAD3863D29A51FBE0038017F /* CommentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3863C29A51FBE0038017F /* CommentService.swift */; };
 		FAD3863F29A523580038017F /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3863E29A523580038017F /* Comment.swift */; };
 		FAD3864129A525CE0038017F /* CommentRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD3864029A525CE0038017F /* CommentRowView.swift */; };
 		FAD43B1A2962E212008698BD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD43B192962E212008698BD /* MainTabView.swift */; };
@@ -113,7 +112,6 @@
 		FAEB4E3629DB2AEC00590469 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FAEB4E3529DB2AEC00590469 /* Kingfisher */; };
 		FAF5850F298F6732008D529B /* ChatLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF5850E298F6732008D529B /* ChatLogView.swift */; };
 		FAF58511298FE69C008D529B /* ChatLogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF58510298FE69C008D529B /* ChatLogViewModel.swift */; };
-		FAF58513298FF135008D529B /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF58512298FF135008D529B /* MessageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -197,7 +195,6 @@
 		FAB617C52982C50B00D7D16D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		FABBD22C29D33D1200A142AA /* CustomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputView.swift; sourceTree = "<group>"; };
 		FAC02930296483740078E603 /* UserStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsView.swift; sourceTree = "<group>"; };
-		FAD3863C29A51FBE0038017F /* CommentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentService.swift; sourceTree = "<group>"; };
 		FAD3863E29A523580038017F /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		FAD3864029A525CE0038017F /* CommentRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRowView.swift; sourceTree = "<group>"; };
 		FAD43B192962E212008698BD /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -221,7 +218,6 @@
 		FAE2089629C37AA100C3C763 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		FAF5850E298F6732008D529B /* ChatLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogView.swift; sourceTree = "<group>"; };
 		FAF58510298FE69C008D529B /* ChatLogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLogViewModel.swift; sourceTree = "<group>"; };
-		FAF58512298FF135008D529B /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,8 +384,6 @@
 				FAA6A14E296B0D37006A3B9E /* ImageUploader.swift */,
 				FA5EAE91296DC6D50066E0FB /* UserService.swift */,
 				FAB617BF2982B5C600D7D16D /* PostService.swift */,
-				FAF58512298FF135008D529B /* MessageService.swift */,
-				FAD3863C29A51FBE0038017F /* CommentService.swift */,
 				FAE2089629C37AA100C3C763 /* NotificationService.swift */,
 			);
 			path = Service;
@@ -886,7 +880,6 @@
 				FA7DBE782965CD2100FC21D2 /* NewPostView.swift in Sources */,
 				FAD43B222962E4ED008698BD /* NotificationView.swift in Sources */,
 				FA1AE5D429C0BE89005A4E6B /* TrackingRunView.swift in Sources */,
-				FAF58513298FF135008D529B /* MessageService.swift in Sources */,
 				FA2B8671294EF4050024D21B /* FeedView.swift in Sources */,
 				FA91D52F29954F3F0089C727 /* MessageBubbleView.swift in Sources */,
 				FA619D3429D49836003892DF /* PostGridView.swift in Sources */,
@@ -933,7 +926,6 @@
 				FA8417A029C212DE00724B76 /* CLLocation.swift in Sources */,
 				FA353C1529DC7FC500A2EB0F /* TitleRowView.swift in Sources */,
 				FA8417B129C228C100724B76 /* ErrorView.swift in Sources */,
-				FAD3863D29A51FBE0038017F /* CommentService.swift in Sources */,
 				FA2D9BB229D9F01A00D7806B /* LazyView.swift in Sources */,
 				FAD47A1729D8061B0040E8C9 /* PostGridViewModel.swift in Sources */,
 				FAD93055296A7390002F82AB /* AuthViewModel.swift in Sources */,

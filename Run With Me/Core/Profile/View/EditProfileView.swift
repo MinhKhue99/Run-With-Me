@@ -65,7 +65,8 @@ struct EditProfileView: View {
             }
         }
         
-        viewModel.updateUserInfo(bio: bioText, email: email, username: username, fullname: fullname, image: selectedImage)
+        viewModel.updateUserInfo(bio: bioText, email: email, username: username, fullname: fullname)
+        viewModel.updateUserImage(image: selectedImage)
     }
     
     // MARK: - body

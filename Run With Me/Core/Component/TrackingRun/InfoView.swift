@@ -48,33 +48,6 @@ struct InfoView: View {
                             .bigButton()
                     }
                 }
-//                else {
-//                    Menu {
-//                        Button {
-//                            Emails.compose(subject: "\(NAME) Feedback")
-//                        } label: {
-//                            Label("Send us Feedback", systemImage: "envelope")
-//                        }
-//                        Button {
-//                            Store.writeReview()
-//                        } label: {
-//                            Label("Write a Review", systemImage: "quote.bubble")
-//                        }
-//                        Button {
-//                            Store.requestRating()
-//                        } label: {
-//                            Label("Rate \(NAME)", systemImage: "star")
-//                        }
-//                        Button {
-//                            showShareSheet = true
-//                        } label: {
-//                            Label("Share with a Friend", systemImage: "person.badge.plus")
-//                        }
-//                    } label: {
-//                        Text("Contribute...")
-//                            .bigButton()
-//                    }
-//                }
             }
             .padding()
             .navigationBarTitleDisplayMode(.inline)

@@ -15,7 +15,7 @@ class EditProfileViewModel: ObservableObject {
         self.user = user
     }
     
-    func updateUserInfo(bio: String, email: String, username: String, fullname: String, image: UIImage?) {
+    func updateUserInfo(bio: String, email: String, username: String, fullname: String) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let currentEmail = user.email
         let currentUser = Auth.auth().currentUser
@@ -27,18 +27,27 @@ class EditProfileViewModel: ObservableObject {
                 }
             }
         }
+        
+        COLLECTION_USERS
+            .document(uid)
+            .updateData(["bio": bio,
+                         "email": email,
+                         "fullname": fullname,
+                         "username": username
+                        ]) { _ in
+                self.uploadCompleted = true
+            }
+    }
+    
+    
+    func updateUserImage(image: UIImage?) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         ImageUploader.uploadImage(image: image, type: .profile) { profileImageUrl in
             COLLECTION_USERS
                 .document(uid)
-                .updateData(["bio": bio,
-                             "email": email,
-                             "fullname": fullname,
-                             "profileImageUrl": profileImageUrl,
-                             "username": username
-                            ]) { _ in
+                .updateData(["profileImageUrl": profileImageUrl,]) { _ in
                     self.uploadCompleted = true
                 }
         }
-        
     }
 }

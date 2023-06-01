@@ -14,7 +14,7 @@ struct ExploreView: View {
     @State private var inSearchMode = false
     // MARK: - body
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 SearchBarView(text: $exploreViewModel.searchText, isEditing: $inSearchMode)
                     .padding()

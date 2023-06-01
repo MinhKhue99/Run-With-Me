@@ -27,16 +27,17 @@ struct NotificationRowView: View {
                         .scaledToFill()
                         .frame(width: 40, height: 40)
                         .clipShape(Circle())
-                    
-                    Text(viewModel.notification.username)
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundColor(.black) +
-                    Text(viewModel.notification.type.notificationMessage)
-                        .font(.system(size: 15))
-                        .foregroundColor(.black) +
-                    Text(" \(viewModel.timestampString)")
-                        .font(.system(size: 12))
-                        .foregroundColor(Color(.gray))
+                    HStack {
+                        Text(viewModel.notification.username)
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundColor(Color("Black"))
+                        Text(viewModel.notification.type.notificationMessage)
+                            .font(.system(size: 15))
+                            .foregroundColor(Color("Black"))
+                        Text(" \(viewModel.timestampString)")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color(.gray))
+                    }
                 }
             }
             
@@ -58,7 +59,7 @@ struct NotificationRowView: View {
                 }, label: {
                     Text(isFollowed ? "Following" : "Follow")
                     .font(.system(size: 15, weight: .semibold))
-                    .frame(width: 172, height: 32)
+                    .frame(width: 100, height: 32)
                     .foregroundColor(isFollowed ? .black : .white)
                     .background(isFollowed ? .white : .blue)
                     .overlay(

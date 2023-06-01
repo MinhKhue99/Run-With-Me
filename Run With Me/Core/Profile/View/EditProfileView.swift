@@ -128,7 +128,7 @@ struct EditProfileView: View {
                 .frame(width: 300)
                 .multilineTextAlignment(.center)
             
-            InputTextField(imageName: "envelope", placeholderText: "Email", text: $email)
+            InputTextField(imageName: "envelope", placeholderText: "\(viewModel.user.email)", text: $email)
                 .textContentType(.emailAddress)
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)

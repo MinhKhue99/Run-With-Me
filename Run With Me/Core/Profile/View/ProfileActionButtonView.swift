@@ -13,6 +13,10 @@ struct ProfileActionButtonView: View {
     @ObservedObject var profileViewModel: ProfileViewModel
     var isFollowed: Bool { return profileViewModel.user.isFollowed ?? false }
     @State var showEditProfile = false
+    @ObservedObject private var messagesViewModel = MessagesViewModel()
+    @ObservedObject private var chatLogViewModel = ChatLogViewModel(chatUser: nil)
+    @State private var isNavigateToChatLogView = false
+    @State var chatUser: User?
     // MARK: - body
     var body: some View {
         
@@ -51,7 +55,11 @@ struct ProfileActionButtonView: View {
                 .cornerRadius(3)
                 
                 Button(action: {
-                
+                    print("send message")
+                    self.chatUser = profileViewModel.user
+                    self.isNavigateToChatLogView.toggle()
+                    self.chatLogViewModel.chatUser = profileViewModel.user
+                    self.chatLogViewModel.fetchMessages()
                 }, label: {
                 Text("Message")
                     .font(.system(size: 15, weight: .semibold))
@@ -64,6 +72,9 @@ struct ProfileActionButtonView: View {
                     )
                 })
                 .cornerRadius(3)
+                .navigationDestination(isPresented: $isNavigateToChatLogView) {
+                    ChatLogView(chatLogViewModel: chatLogViewModel)
+                }
             }
         }
     }
